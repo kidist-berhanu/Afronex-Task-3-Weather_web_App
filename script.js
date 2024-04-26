@@ -5,6 +5,7 @@ const Url ="https://api.openweathermap.org/data/2.5/weather?&units=metric&q=";
 const cityName = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
 const weatherIcon = document.querySelector(".weather-icon");
+const weatherCondition = document.querySelector(".weather-condition");
 
 async function checkWeather(city){
     const result = await fetch(Url + city + `&appid=${Key}`);
@@ -23,19 +24,24 @@ async function checkWeather(city){
 
         switch(data.weather[0].main) {
             case "Clouds":
-                weatherIcon.src = "images/clouds.png";
+                weatherIcon.src = "images/cloudy.svg";
+                weatherCondition.textContent = "Cloudy";
                 break;
             case "Clear":
                 weatherIcon.src = "images/day.svg";
+                weatherCondition.textContent = "Clear";
                 break;
             case "Rain":
                 weatherIcon.src = "images/rainy.svg";
+                weatherCondition.textContent = "Rainny";
                 break;
             case "Drizzle":
                 weatherIcon.src = "images/drizzle.png";
+                weatherCondition.textContent = "Drizzle";
                 break;
             case "Mist":
                 weatherIcon.src = "images/mist.png";
+                weatherCondition.textContent = "Mist";
                 break;
             default:
                 break;
@@ -46,7 +52,11 @@ async function checkWeather(city){
     }
 }
 
-searchBtn.addEventListener("click", ()=>{
-    checkWeather(cityName.value);
-})
-
+searchBtn.addEventListener("click", function() {
+    if (cityName.value.trim() === "") {
+        document.querySelector(".invalid").style.display = "block";
+        document.querySelector(".weather").style.display = "none";
+    } else {
+        checkWeather(cityName.value);
+    }
+});
