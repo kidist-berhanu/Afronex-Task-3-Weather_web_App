@@ -5,14 +5,15 @@
     box-sizing: border-box;
 }
 body {
-    background:rgb(68, 147, 192);
-    background-size: 100% ; /* Cover the entire body */
+    background:rgb(51, 151, 209);
+    background-size: 100% ; 
 }
 
 .container {
     width: 100%;
     max-width: 430px;
     background-image: url(images/sky1.jpg);
+    background-size: 100% ;
     color: #fff;
     margin: 50px auto 0  ;
     border-radius: 20px;
