@@ -51,12 +51,28 @@ async function checkWeather(city){
         document.querySelector(".invalid").style.display = "none";
     }
 }
-
+/* When search button is clicked*/
 searchBtn.addEventListener("click", function() {
     if (cityName.value.trim() === "") {
+        const noInput =  document.querySelector(".invalid");
+        noInput.textContent = "Please enter city name.";
         document.querySelector(".invalid").style.display = "block";
         document.querySelector(".weather").style.display = "none";
     } else {
         checkWeather(cityName.value);
+    }
+});
+/* When enter is pressed*/
+cityName.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        if (cityName.value.trim() === "") {
+            const noInput = document.querySelector(".invalid");
+            noInput.textContent = "Please enter city name.";
+            document.querySelector(".invalid").style.display = "block";
+            document.querySelector(".weather").style.display = "none";
+        } else {
+            checkWeather(cityName.value);
+        }
     }
 });
