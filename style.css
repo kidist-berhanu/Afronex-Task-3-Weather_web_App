@@ -104,6 +104,10 @@ body {
     margin-top: 40px;
     display: none;
 }
+.invalid  img{
+    width: 100px;
+    margin-right: 10px;
+}
 @media only screen and (max-width: 600px) {
     .container {
         padding: 35px 15px;
